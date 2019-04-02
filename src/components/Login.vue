@@ -46,21 +46,26 @@ export default {
     background-image: linear-gradient(to top, #48a4ef 0%, #376bda 100%);
 }
 .login-brand {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-205px);
     overflow: hidden;
     width: 70px;
     height: 70px;
-    margin: 0 auto -10px auto;
+    margin: 0 auto;
     border-radius: 50%;
-    -webkit-box-shadow: 0 4px 40px rgba(0, 0, 0, 0.07);
-    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.07);
+    /* -webkit-box-shadow: 0 4px 40px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 0 1px lightgray; */
     padding: 10px;
-    background: #2d3436;
+    background:#dff9fb;
     z-index: 1;
-    position: relative;
+    
 }
 
 .box {
     width: 300px;
+    height: 230px;
     padding: 60px 30px 30px 30px;
     /*定位方法*/
     position: absolute;
