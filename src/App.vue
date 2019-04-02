@@ -11,10 +11,10 @@ export default {
 </script>
 
 <style>
-#app {
-    /* position: absolute;
+/* #app {
+    position: absolute;
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(to top, #48a4ef 0%, #376bda 100%); */
-}
+    background-image: linear-gradient(to top, #48a4ef 0%, #376bda 100%);
+} */
 </style>
