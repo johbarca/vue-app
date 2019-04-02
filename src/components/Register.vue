@@ -1,6 +1,6 @@
 <template>
-    <div>
-        
+    <div >
+        <div class="register-brand"></div>
     </div>
 </template>
 

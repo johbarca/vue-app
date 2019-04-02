@@ -6,27 +6,129 @@
                 <i class="fas fa-search"></i>
             </a>
         </div>
-        <div class="card middle">
-            <div class="front">
-                <img src="/static/img.jpg" alt>
+        <div class="container">
+            <div class="card">
+                <div class="front">
+                    <img src="/static/photo1.jpg" alt>
+                </div>
+                <div class="back">
+                    <div class="back-content middle">
+                        <h2>johbarca</h2>
+                        <span></span>
+                        <div class="share">
+                            <a href="#">
+                                <i class="fab fa-facebook-square"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-weixin"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-weibo"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="back">
-                <div class="back-content middle">
-                    <h2>johbarca</h2>
-                    <span></span>
-                    <div class="share">
-                        <a href="#">
-                            <i class="fab fa-facebook-square"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-weixin"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-weibo"></i>
-                        </a>
+            <div class="card">
+                <div class="front">
+                    <img src="/static/photo2.jpg" alt>
+                </div>
+                <div class="back">
+                    <div class="back-content middle">
+                        <h2>johbarca</h2>
+                        <span></span>
+                        <div class="share">
+                            <a href="#">
+                                <i class="fab fa-facebook-square"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-weixin"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-weibo"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="front">
+                    <img src="/static/photo3.jpg" alt>
+                </div>
+                <div class="back">
+                    <div class="back-content middle">
+                        <h2>johbarca</h2>
+                        <span></span>
+                        <div class="share">
+                            <a href="#">
+                                <i class="fab fa-facebook-square"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-weixin"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-weibo"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="front">
+                    <img src="/static/photo4.jpg" alt>
+                </div>
+                <div class="back">
+                    <div class="back-content middle">
+                        <h2>johbarca</h2>
+                        <span></span>
+                        <div class="share">
+                            <a href="#">
+                                <i class="fab fa-facebook-square"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-weixin"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-weibo"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="front">
+                    <img src="/static/photo5.jpg" alt>
+                </div>
+                <div class="back">
+                    <div class="back-content middle">
+                        <h2>johbarca</h2>
+                        <span></span>
+                        <div class="share">
+                            <a href="#">
+                                <i class="fab fa-facebook-square"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-weixin"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-weibo"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -48,6 +150,7 @@ export default {
     width: 100%;
     height: 100%;
     background: #30336b;
+    overflow: hidden;
 }
 .search-box {
     position: absolute;
@@ -91,6 +194,18 @@ export default {
     align-items: center;
     transition: 0.4s;
 }
+.container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-top: 100px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+    align-content: stretch;
+}
 .middle {
     position: absolute;
     top: 50%;
@@ -98,18 +213,19 @@ export default {
     transform: translate(-50%, -50%);
 }
 .card {
+    /* margin: 50px; */
     cursor: pointer;
-    width: 525px;
-    height: 350px;
+    width: 300px;
+    height: 200px;
 }
 .front,
 .back {
-    width: 100%;
-    height: 100%;
+    width: 300px;
+    height: 200px;
     overflow: hidden;
     backface-visibility: hidden;
     position: absolute;
-    transition: transform .6s linear;
+    transition: transform 0.8s linear;
 }
 .front img {
     height: 100%;
@@ -134,9 +250,9 @@ export default {
     width: 40px;
     height: 40px;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     color: #2980b9;
-    font-size: 18px;
+    font-size: 20px;
     border-radius: 50%;
     transition: 0.4s;
 }
@@ -144,10 +260,10 @@ export default {
     background: #2980b9;
     color: white;
 }
-.card:hover > .front{
+.card:hover > .front {
     transform: perspective(600px) rotateY(-180deg);
 }
-.card:hover > .back{
+.card:hover > .back {
     transform: perspective(600px) rotateY(0deg);
 }
 </style>
