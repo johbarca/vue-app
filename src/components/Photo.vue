@@ -56,7 +56,7 @@ export default {
     cursor: pointer;
     width: 300px;
 	height: 200px;
-	margin: 30px;
+	margin: 25px;
 }
 .front,
 .back {
