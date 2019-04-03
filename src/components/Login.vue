@@ -1,13 +1,18 @@
 <template>
-    <div class="hello">
-		<div class="login-brand">
-			<img src="/static/pingtaiyingyong.png" alt="logo" width="70px">
-		</div>
+    <div class="main">
+        <div class="login-brand">
+            <img src="/static/pingtaiyingyong.png" alt="logo" width="70px">
+        </div>
         <form action class="box">
             <h1>LOGIN</h1>
             <input type="text" placeholder="name" v-model="name">
             <input type="password" placeholder="password" v-model="password">
-            <input type="submit" @click="doLogin"> 
+            <input type="submit" @click="doLogin">
+            <div class="text-foot">
+                Don't have an account?
+                <router-link to="/Register">Register</router-link>
+                <!-- <a href="" class="register-link">Register</a> -->
+            </div>
         </form>
     </div>
 </template>
@@ -17,39 +22,38 @@ export default {
     name: "Login",
     data() {
         return {
-			name:"barca",
-			password:"123"
+            name: "barca",
+            password: "123"
         };
-	},
-	methods: {
-		doLogin(){
-			if(this.name=="barca"&&this.password=="123"){
-				this.$router.push({ path: "/main" });
-			}else{
-				this.$message({
-					duration:1000,
-					type:"error",
-					message:"账户或密码错误！"
-				})
-			}
-			
-		}
-	}
+    },
+    methods: {
+        doLogin() {
+            if (this.name == "barca" && this.password == "123") {
+                this.$router.push({ path: "/main" });
+            } else {
+                this.$message({
+                    duration: 1000,
+                    type: "error",
+                    message: "账户或密码错误！"
+                });
+            }
+        }
+    }
 };
 </script>
 
 <style scoped>
-.hello{
-	position: absolute;
+.main {
+    position: absolute;
     height: 100%;
     width: 100%;
     background-image: linear-gradient(to top, #48a4ef 0%, #376bda 100%);
 }
 .login-brand {
     position: absolute;
-    top:50%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%,-205px);
+    transform: translate(-50%, -225px);
     overflow: hidden;
     width: 70px;
     height: 70px;
@@ -58,14 +62,13 @@ export default {
     /* -webkit-box-shadow: 0 4px 40px rgba(0, 0, 0, 0.07);
     box-shadow: 0 0 1px lightgray; */
     padding: 10px;
-    background:#dff9fb;
+    background: #dff9fb;
     z-index: 1;
-    
 }
 
 .box {
     width: 300px;
-    height: 230px;
+    height: 270px;
     padding: 60px 30px 30px 30px;
     /*定位方法*/
     position: absolute;
@@ -117,5 +120,10 @@ export default {
 }
 .box input[type="submit"]:hover {
     background: #27ae60;
+}
+.box .text-foot{
+    line-height: 40px;
+    text-align: center;
+    color: white;
 }
 </style>
