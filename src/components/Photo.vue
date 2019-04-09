@@ -7,6 +7,7 @@
             <div class="back">
                 <div class="back-content middle">
                     <h2>johbarca</h2>
+                    
                     <span></span>
                     <div class="share">
                         <a href="#">
