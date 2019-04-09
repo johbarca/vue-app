@@ -7,7 +7,6 @@
             <div class="back">
                 <div class="back-content middle">
                     <h2>johbarca</h2>
-                    
                     <span></span>
                     <div class="share">
                         <a href="#">
@@ -56,8 +55,8 @@ export default {
     /* margin: 50px; */
     cursor: pointer;
     width: 300px;
-	height: 200px;
-	margin: 25px;
+    height: 200px;
+    margin: 25px;
 }
 .front,
 .back {
