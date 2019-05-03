@@ -5,7 +5,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-
+import axios from 'axios'
+import httpPlugin from '@/assets/http'
 import fontawesome from '@fortawesome/fontawesome'
 import {
   FontAwesomeIcon
@@ -30,7 +31,8 @@ Vue.config.productionTip = false
 Vue.use(ElementUI, {
   size: 'small'
 })
-
+Vue.use(httpPlugin)
+// Vue.prototype.$http = axios
 new Vue({
   el: '#app',
   router,

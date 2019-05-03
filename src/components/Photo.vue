@@ -39,7 +39,7 @@ export default {
     },
     methods: {},
     beforeMount() {
-        console.log(this.src);
+        // console.log(this.src);
     }
 };
 </script>

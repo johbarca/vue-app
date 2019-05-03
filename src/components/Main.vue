@@ -8,13 +8,16 @@
         </div>
         <div class="container">
             <Photo v-for="(img,index) in imgs" :src="img.src" :key="index"></Photo>
+            <p style="color:white">{{this.$store.commit('change')}}{{this.$store.state.count}}</p>
         </div>
     </div>
 </template>
 <script>
 import Photo from "@/components/Photo";
+import store from "@/store/index.js";
 export default {
     name: "Main",
+    store,
     components: {
         Photo
     },
