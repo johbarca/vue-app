@@ -5,9 +5,14 @@
         </div>
         <form action class="box">
             <h1>Create account</h1>
-            <input class="in" type="text" placeholder="name" v-model="name">
-            <input class="in" type="password" placeholder="password" v-model="password">
-            <input class="in" type="password" placeholder="confirm password" v-model="repassword">
+            <input class="in" type="text" placeholder="name" v-model="params.name">
+            <input class="in" type="password" placeholder="password" v-model="params.password">
+            <input
+                class="in"
+                type="password"
+                placeholder="confirm password"
+                v-model="params.repassword"
+            >
             <input type="submit" @click="doLogin">
             <div class="text-foot">
                 Already have an account?
@@ -23,9 +28,11 @@ export default {
     name: "Register",
     data() {
         return {
-            name: "",
-            password: "",
-            repassword: ""
+            params: {
+                name: "",
+                password: "",
+                repassword: ""
+            }
         };
     },
     methods: {
@@ -35,12 +42,14 @@ export default {
                 this.password != "" &&
                 this.repassword == this.password
             ) {
-                this.$message({
-                    duration: 1000,
-                    type: "success",
-                    message: "注册成功！"
+                this.$http.post("/register", this.params).then(res => {
+                    this.$message({
+                        duration: 1000,
+                        type: "success",
+                        message: "注册成功！"
+                    });
+                    this.$router.push({ path: "/" });
                 });
-                this.$router.push({ path: "/" });
             } else {
                 this.$message({
                     duration: 1000,
