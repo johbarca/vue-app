@@ -37,16 +37,23 @@ export default {
                         "application/x-www-form-urlencoded; charset=UTF-8"
                 }
             }); */
-            this.$http.post("/login", this.params).then(res => res.data);
-            /*  if (this.name == "barca" && this.password == "123") {
-                this.$router.push({ path: "/main" });
-            } else {
-                this.$message({
-                    duration: 1000,
-                    type: "error",
-                    message: "账户或密码错误！"
+            this.$http
+                .post("/login", this.params)
+                .then(res => {
+                    this.$message({
+                        duration: 1000,
+                        type: "success",
+                        message: "登录成功！"
+                    });
+                    this.$router.push({ path: "/main" });
+                })
+                .catch(err => {
+                    this.$message({
+                        duration: 1000,
+                        type: "error",
+                        message: "登录失败！"
+                    });
                 });
-            } */
         }
     }
 };
