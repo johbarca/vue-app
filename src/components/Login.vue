@@ -40,6 +40,8 @@ export default {
             this.$http
                 .post("/login", this.params)
                 .then(res => {
+                    console.log(res);
+                    this.$store.state.name = res.data.result[0].name;
                     this.$message({
                         duration: 1000,
                         type: "success",

@@ -8,7 +8,7 @@
         </div>
         <div class="container">
             <Photo v-for="(img,index) in imgs" :src="img.src" :key="index"></Photo>
-            <p style="color:white">{{this.$store.commit('change')}}{{this.$store.state.count}}</p>
+            <!-- <p style="color:white">{{this.$store.commit('change')}}{{this.$store.state.count}}</p> -->
         </div>
     </div>
 </template>

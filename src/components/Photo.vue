@@ -6,7 +6,7 @@
             </div>
             <div class="back">
                 <div class="back-content middle">
-                    <h2>johbarca</h2>
+                    <h2>{{this.$store.state.name}}</h2>
                     <span></span>
                     <div class="share">
                         <a href="#">
