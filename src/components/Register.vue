@@ -3,23 +3,28 @@
         <div class="login-brand">
             <img src="/static/pingtaiyingyong.png" alt="logo" width="70px">
         </div>
-        <form action class="box">
+        <el-form :model="params" :rules="rules" ref="ruleForm" class="box">
             <h1>Create account</h1>
-            <input class="in" type="text" placeholder="name" v-model="params.name">
-            <input class="in" type="password" placeholder="password" v-model="params.password">
-            <input
-                class="in"
-                type="password"
-                placeholder="confirm password"
-                v-model="params.repassword"
-            >
-            <input type="submit" @click="doLogin">
+            <el-form-item prop="name">
+                <input class="in" type="text" placeholder="name" v-model="params.name">
+            </el-form-item>
+            <el-form-item prop="password">
+                <input class="in" type="password" placeholder="password" v-model="params.password">
+            </el-form-item>
+            <el-form-item prop="repassword">
+                <input
+                    class="in"
+                    type="password"
+                    placeholder="confirm password"
+                    v-model="params.repassword"
+                >
+            </el-form-item>
+            <input type="submit" @click="submitForm">
             <div class="text-foot">
                 Already have an account?
                 <router-link to="/">Login</router-link>
-                <!-- <a href="" class="register-link">Register</a> -->
             </div>
-        </form>
+        </el-form>
     </div>
 </template>
 
@@ -27,20 +32,78 @@
 export default {
     name: "Register",
     data() {
+        var validatePass = (rule, value, callback) => {
+            if (value === "") {
+                callback(new Error("请输入密码"));
+            } else {
+                if (this.params.repassword !== "") {
+                    this.$refs.ruleForm.validateField("repassword");
+                }
+                callback();
+            }
+        };
+        var validatePass2 = (rule, value, callback) => {
+            if (value === "") {
+                callback(new Error("请再次输入密码"));
+            } else if (value !== this.params.password) {
+                callback(new Error("两次输入密码不一致!"));
+            } else {
+                callback();
+            }
+        };
         return {
             params: {
                 name: "",
                 password: "",
                 repassword: ""
+            },
+            rules: {
+                name: [
+                    { required: true, message: "请输入姓名", trigger: "blur" },
+                    {
+                        min: 2,
+                        max: 20,
+                        message: "长度在2到20个字符",
+                        trigger: "blur"
+                    }
+                ],
+                password: [{ validator: validatePass, trigger: "blur" }],
+                repassword: [{ validator: validatePass2, trigger: "blur" }]
             }
         };
     },
     methods: {
-        doLogin() {
+        submitForm() {
+            this.$refs.ruleForm.validate(valid => {
+                if (valid) {
+                    this.$http
+                        .post("/register", this.params)
+                        .then(res => {
+                            this.$message({
+                                duration: 1000,
+                                type: "success",
+                                message: "注册成功！"
+                            });
+                            this.$router.push({ path: "/" });
+                        })
+                        .catch(err => {
+                            this.$message({
+                                duration: 1000,
+                                type: "error",
+                                message: "注册失败！"
+                            });
+                        });
+                } else {
+                    console.log("error submit!!");
+                    return false;
+                }
+            });
+        }
+        /* doRegister() {
             if (
-                this.name != "" &&
-                this.password != "" &&
-                this.repassword == this.password
+                this.params.name != "" &&
+                this.params.password != "" &&
+                this.params.repassword == this.params.password
             ) {
                 this.$http.post("/register", this.params).then(res => {
                     this.$message({
@@ -57,7 +120,7 @@ export default {
                     message: "注册失败！"
                 });
             }
-        }
+        } */
     }
 };
 </script>
@@ -73,7 +136,7 @@ export default {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -225px);
+    transform: translate(-50%, -260px);
     overflow: hidden;
     width: 70px;
     height: 70px;
@@ -88,7 +151,7 @@ export default {
 
 .box {
     width: 300px;
-    height: 270px;
+    height: 340px;
     padding: 60px 30px 40px 30px;
     /*定位方法*/
     position: absolute;
@@ -144,5 +207,8 @@ export default {
     line-height: 40px;
     text-align: center;
     color: white;
+}
+.el-form-item {
+    margin: 0;
 }
 </style>
