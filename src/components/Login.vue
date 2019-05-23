@@ -41,21 +41,45 @@ export default {
                 .post("/login", this.params)
                 .then(res => {
                     console.log(res);
-                    this.$store.state.name = res.data.result[0].name;
-                    this.$message({
-                        duration: 1000,
-                        type: "success",
-                        message: "登录成功！"
-                    });
-                    this.$router.push({ path: "/main" });
+                    /* this.$store.state.name = res.data.result[0].name;
+                this.$message({
+                    duration: 1000,
+                    type: "success",
+                    message: "登录成功！"
+                });
+                this.$router.push({ path: "/main" }); */
+                    if (res.data.result != null) {
+                        this.$store.state.name = res.data.result[0].name;
+                        this.$message({
+                            duration: 1000,
+                            type: "success",
+                            message: "登录成功！"
+                        });
+                        this.$router.push({ path: "/main" });
+                    } else {
+                        this.$message({
+                            duration: 1000,
+                            type: "error",
+                            message: "登录失败，账户或者密码错误！"
+                        });
+                    }
                 })
                 .catch(err => {
+                    console.log(err);
                     this.$message({
                         duration: 1000,
                         type: "error",
-                        message: "登录失败！"
+                        message: "失败"
                     });
                 });
+            /* .catch(err => {
+                    console.log(err);
+                    this.$message({
+                        duration: 1000,
+                        type: "error",
+                        message: "失败"
+                    });
+                }); */
         }
     }
 };

@@ -1,15 +1,30 @@
 <template>
     <div class="main">
+        <div class="next" @click="jump">
+            <i class="fas fa-arrow-right"></i>
+        </div>
         <div class="search-box">
             <input type="text" placeholder="type to search">
             <a class="search-btn" href="#">
                 <i class="fas fa-search"></i>
             </a>
         </div>
+
+        <el-dialog :visible.sync="dialogVisible">
+            <img width="100%" :src="dialogImageUrl" alt>
+        </el-dialog>
         <div class="container">
             <Photo v-for="(img,index) in imgs" :src="img.src" :key="index"></Photo>
             <!-- <p style="color:white">{{this.$store.commit('change')}}{{this.$store.state.count}}</p> -->
         </div>
+        <el-upload
+            action="https://jsonplaceholder.typicode.com/posts/"
+            list-type="picture-card"
+            :on-preview="handlePictureCardPreview"
+            :on-remove="handleRemove"
+        >
+            <i class="el-icon-plus"></i>
+        </el-upload>
     </div>
 </template>
 <script>
@@ -32,6 +47,18 @@ export default {
                 { src: "/static/photo5.jpg" }
             ]
         };
+    },
+    methods: {
+        jump() {
+            this.$router.push({ path: "/logo" });
+        },
+        handleRemove(file, fileList) {
+            console.log(file, fileList);
+        },
+        handlePictureCardPreview(file) {
+            this.dialogImageUrl = file.url;
+            this.dialogVisible = true;
+        }
     }
 };
 </script>
@@ -43,6 +70,25 @@ export default {
     background: #30336b;
     overflow-x: hidden;
     overflow-y: auto;
+}
+.next {
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    /* background: white; */
+    margin: 20px;
+    padding: 10px;
+    font-size: 30px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.next:hover {
+    background: white;
+    color: #30336b;
+    transition: 0.5s;
+    cursor: pointer;
 }
 .search-box {
     position: absolute;
