@@ -9,22 +9,10 @@
                 <i class="fas fa-search"></i>
             </a>
         </div>
-
-        <el-dialog :visible.sync="dialogVisible">
-            <img width="100%" :src="dialogImageUrl" alt>
-        </el-dialog>
         <div class="container">
             <Photo v-for="(img,index) in imgs" :src="img.src" :key="index"></Photo>
             <!-- <p style="color:white">{{this.$store.commit('change')}}{{this.$store.state.count}}</p> -->
         </div>
-        <el-upload
-            action="https://jsonplaceholder.typicode.com/posts/"
-            list-type="picture-card"
-            :on-preview="handlePictureCardPreview"
-            :on-remove="handleRemove"
-        >
-            <i class="el-icon-plus"></i>
-        </el-upload>
     </div>
 </template>
 <script>
@@ -51,13 +39,6 @@ export default {
     methods: {
         jump() {
             this.$router.push({ path: "/logo" });
-        },
-        handleRemove(file, fileList) {
-            console.log(file, fileList);
-        },
-        handlePictureCardPreview(file) {
-            this.dialogImageUrl = file.url;
-            this.dialogVisible = true;
         }
     }
 };
