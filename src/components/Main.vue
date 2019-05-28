@@ -10,8 +10,7 @@
             </a>
         </div>
         <div class="container">
-            <Photo v-for="(img,index) in imgs" :src="img.src" :key="index"></Photo>
-            <!-- <p style="color:white">{{this.$store.commit('change')}}{{this.$store.state.count}}</p> -->
+            <Photo v-for="(img,index) in imgs" :img="img" :key="index"></Photo>
         </div>
     </div>
 </template>
@@ -27,19 +26,24 @@ export default {
     props: {},
     data() {
         return {
-            imgs: [
-                { src: "/static/photo1.jpg" },
-                { src: "/static/photo2.jpg" },
-                { src: "/static/photo3.jpg" },
-                { src: "/static/photo4.jpg" },
-                { src: "/static/photo5.jpg" }
-            ]
+            imgs: []
         };
     },
     methods: {
         jump() {
             this.$router.push({ path: "/logo" });
+        },
+        getFiles() {
+            let params = {
+                userName: this.$store.state.name
+            };
+            this.$http.post("getFiles", params).then(result => {
+                this.imgs = result.data.fileLists;
+            });
         }
+    },
+    beforeMount() {
+        this.getFiles();
     }
 };
 </script>

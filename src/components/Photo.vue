@@ -2,11 +2,14 @@
     <div>
         <div class="card">
             <div class="front">
-                <img :src="this.src" alt>
+                <img :src="this.img.path" alt="图片加载失败">
             </div>
             <div class="back">
                 <div class="back-content middle">
                     <h2>{{this.$store.state.name}}</h2>
+                    <a :href="this.img.path" :download="this.img.path">{{this.img.name}}</a>
+                    <!-- <a :href="this.img.path" download="">{{this.img.name}}</a> -->
+                    <!-- <el-button @click="download">下载</el-button> -->
                     <span></span>
                     <div class="share">
                         <a href="#">
@@ -32,12 +35,20 @@
 export default {
     name: "Photo",
     props: {
-        src: String
+        img: {}
     },
     data() {
         return {};
     },
-    methods: {},
+    methods: {
+        download() {
+            this.$http
+                .post("/download", { filename: this.img.name })
+                .then(result => {
+                    console.log(result);
+                });
+        }
+    },
     beforeMount() {
         // console.log(this.src);
     }

@@ -17,19 +17,6 @@
             <el-dialog :visible.sync="visible">
                 <img width="100%" :src="imageUrl" alt>
             </el-dialog>
-            <!-- <form action enctype="multipart/form-data" method="post">
-                <input
-                    id="pop_file"
-                    type="file"
-                    accept=".jpg, .jpeg, .png"
-                    v-on:change="uploadFile($event)"
-                    name="fileTrans"
-                    ref="file"
-                    value
-                >
-            </form>
-
-            <img id="preview" src> -->
         </div>
     </div>
 </template>
@@ -44,30 +31,6 @@ export default {
         };
     },
     methods: {
-        uploadFile: function(ev) {
-            var that = this;
-            const file = document.getElementById("pop_file");
-            const fileObj = file.files[0];
-            const windowURL = window.URL || window.webkitURL;
-            const img = document.getElementById("preview");
-            if (file && fileObj) {
-                const dataURl = windowURL.createObjectURL(fileObj);
-                img.setAttribute("src", dataURl);
-            }
-            console.log(fileObj);
-            var formData = new FormData();
-            formData.append("file", fileObj);
-            // this.$http.post("upload", { formData: formData });
-            this.$http({
-                url: "upload",
-                method: "post",
-                data: formData,
-                dataType: "json",
-                processData: false,
-                contentType: false
-            });
-        },
-
         back() {
             this.$router.push({ path: "/main" });
         },
@@ -79,15 +42,10 @@ export default {
             this.visible = true;
         },
         uploadFileMethod(param) {
-            // let file = Object.assign({}, { file: param.file });
             let file = param.file;
-            // console.log(JSON.stringify(param.file));
             var formData = new FormData();
-            // formData.append("name", param.file.name);
+            formData.append("userName", this.$store.state.name);
             formData.append("file", file);
-            /* Object.keys(file).forEach(key => {
-                formData.append(key, file[key]);
-            }); */
             // this.$http.post("upload", { formData: formData });
             this.$http({
                 url: "upload",
